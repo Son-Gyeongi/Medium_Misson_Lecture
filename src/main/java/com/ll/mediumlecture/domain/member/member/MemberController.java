@@ -1,5 +1,7 @@
 package com.ll.mediumlecture.domain.member.member;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -20,12 +22,14 @@ public class MemberController {
     @Setter // 스프링이 form을 입력 받을 때 필드에 값을 넣어야 한다. 그래서 필요하다.
     @Getter
     public static class JoinForm {
+        @NotBlank
         private String username;
+        @NotBlank
         private String password;
     }
 
     @PostMapping("/join")
-    public String signup(JoinForm joinForm) {
+    public String signup(@Valid JoinForm joinForm) {
 
         return "redirect:/";
     }
