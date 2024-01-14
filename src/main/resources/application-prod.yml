@@ -1,0 +1,29 @@
+# Spring Boot 애플리케이션의 운영 환경 설정
+server:
+  shutdown: graceful # 서버 종료 시 graceful한 종료, 현재 처리 중인 요청을 완료한 후 서버를 종료하는 방식
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB # 파일 업로드 시 허용되는 최대 파일 크기
+      max-request-size: 5MB # 요청에 포함된 전체 멀티파트 요청의 최대 크기
+  datasource: # 데이터베이스 연결 정보를 설정, MySQL 데이터베이스를 사용하며, URL, 사용자 이름, 비밀번호, 및 드라이버 클래스를 지정
+    url: jdbc:mysql://172.17.0.1:3306/medium_prod
+    username: lldjlocal
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # 애플리케이션 실행 시 기존 테이블이나 스키마가 변경되면 자동으로 업데이트
+logging:
+  level: # 로깅 레벨을 설정합니다. 특정 패키지 또는 클래스에 대한 로그 레벨을 INFO로 조정
+    com.ll.medium: INFO
+    org.hibernate.SQL: INFO
+    org.hibernate.orm.jdbc.bind: INFO
+    org.hibernate.orm.jdbc.extract: INFO
+    org.springframework.transaction.interceptor: INFO
+custom: # 애플리케이션에 사용자 정의된 설정을 추가
+  tempDirPath: /gen/temp # 임시 디렉토리 경로를 설정
+  site:
+    baseUrl: "https://www.s-code.io" # 애플리케이션의 기본 URL
+  genFile:
+    dirPath: /gen # 생성된 파일이 저장될 디렉토리 경로를 설정

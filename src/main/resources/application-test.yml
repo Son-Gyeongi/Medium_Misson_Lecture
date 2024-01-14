@@ -1,0 +1,13 @@
+#  Spring Boot 애플리케이션의 테스트 환경 설정
+spring:
+  datasource: # H2 메모리 데이터베이스를 사용하도록 설정, MySQL 모드로 동작하도록 지정
+    url: jdbc:h2:mem:medium_test;MODE=MYSQL
+  jpa:
+    hibernate:
+      ddl-auto: create # 애플리케이션 실행 시 매번 테이블을 생성하므로, 기존 데이터가 계속 유지되지 않음
+custom: # 애플리케이션에 사용자 정의된 설정을 추가
+  site:
+    baseUrl: "http://localhost:8080" # 애플리케이션의 기본 URL
+  tempDirPath: c:/temp/medium_test/temp # 임시 디렉토리 경로를 설정
+  genFile:
+    dirPath: c:/temp/medium_test # 생성된 파일이 저장될 디렉토리 경로를 설정

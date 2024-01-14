@@ -1,0 +1,9 @@
+#  Spring Boot 애플리케이션의 개발 환경 설정
+server:
+  port: 8090 # 애플리케이션은 8090번 포트에서 동작
+spring:
+  thymeleaf: # Thymeleaf 템플릿 엔진의 캐시 사용 여부를 설정
+    cache: false # 개발 중에는 캐시를 비활성화하여 템플릿 변경 사항이 실시간으로 반영
+  output:
+    ansi:
+      enabled: always # ANSI 출력을 항상 활성화, ANSI 색상 코드를 사용하여 콘솔 출력의 색상을 지원
